@@ -1,0 +1,9 @@
+# rewriting rules
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  
+  # force secure pages on pixiekat.net
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP_HOST} ^(?:www\.)?pixiekat\.net$
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
